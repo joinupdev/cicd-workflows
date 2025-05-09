@@ -12,6 +12,11 @@ on:
         type: string
         required: true
 
+# Add permissions needed for GitHub Container Registry
+permissions:
+  contents: read
+  packages: write
+
 env:
   GHCR_REPO: ghcr.io/joinupdev/${{ inputs.image-name }}
   IMAGE_TAG: ${{ inputs.image-tag }}
