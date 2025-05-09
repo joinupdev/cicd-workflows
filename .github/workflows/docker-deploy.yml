@@ -2,6 +2,9 @@ name: docker-deploy
 
 on:
   workflow_call:
+    secrets:
+      WATCHTOWER_TOKEN:
+        required: true
   workflow_dispatch:
 
 jobs:
