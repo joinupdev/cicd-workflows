@@ -11,6 +11,10 @@ on:
         description: Tag for the Docker Image
         type: string
         required: true
+      build-args:
+        description: Build arguments for Docker build
+        type: string
+        required: false
 
 # Add permissions needed for GitHub Container Registry
 permissions:
@@ -72,6 +76,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha,scope=${{ inputs.image-name }}-${{ matrix.platform }}
           cache-to: type=gha,mode=max,scope=${{ inputs.image-name }}-${{ matrix.platform }}
+          build-args: ${{ inputs.build-args }}
 
       - name: Save Digest
         run: |
