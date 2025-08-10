@@ -16,7 +16,7 @@ jobs:
           curl -X POST \
             -H "Authorization: Bearer ${{ secrets.WATCHTOWER_TOKEN }}" \
             -H "Content-Type: application/json" \
-            https://watchtower.joinup.website/v1/update
+            https://watchtower.joinup.co.in/v1/update
 
       - name: Verify Deployment
         run: |
