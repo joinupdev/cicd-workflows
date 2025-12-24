@@ -15,6 +15,9 @@ on:
         description: Build arguments for Docker build
         type: string
         required: false
+    secrets:
+      db_url:
+        required: false
 
 # Add permissions needed for GitHub Container Registry
 permissions:
@@ -77,6 +80,8 @@ jobs:
           cache-from: type=gha,scope=${{ inputs.image-name }}-${{ matrix.platform }}
           cache-to: type=gha,mode=max,scope=${{ inputs.image-name }}-${{ matrix.platform }}
           build-args: ${{ inputs.build-args }}
+          secrets: |
+            db_url=${{ secrets.db_url }}
 
       - name: Save Digest
         run: |
